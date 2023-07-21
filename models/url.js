@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import nanoid from "nanoid"
+import shortid from "shortid"
 const urlSchema = new mongoose.Schema({
 	long:{
 		type:String,
@@ -8,7 +8,12 @@ const urlSchema = new mongoose.Schema({
 	short:{
 		type:String,
 		required:true,
-		default:nanoid
+		default:shortid.generate
+	},
+	clicks:{
+		type:Number,
+		required:true,
+		default:0
 	}
 })
 export default mongoose.model("Url",urlSchema)
